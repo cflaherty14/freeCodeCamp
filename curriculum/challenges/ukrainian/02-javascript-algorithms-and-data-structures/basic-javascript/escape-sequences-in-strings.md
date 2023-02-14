@@ -9,36 +9,31 @@ dashedName: escape-sequences-in-strings
 
 # --description--
 
-Лапки – не єдині символи, що можуть бути <dfn>екрановані</dfn> в рядку. Існує дві причини використовувати екрановані символи:
-
-1.  Щоб дозволити вам використовувати символи, які ви не можете ввести по-іншому, як-от новий рядок.
-2.  Щоб дозволити вам відобразити декілька лапок в рядку без неправильного тлумачення JavaScript того, що ви маєте на увазі.
-
-Ми дізналися про це в попередньому завданні.
+Лапки – не єдині символи, що можуть бути <dfn>екрановані</dfn> в рядку. Escape sequences allow you to use characters you may not otherwise be able to use in a string.
 
 <table class='table table-striped'><thead><tr><th>Код</th><th>Вивід</th></tr></thead><tbody><tr><td><code>\'</code></td><td>одинарні лапки</td></tr><tr><td><code>\"</code></td><td>подвійні лапки</td></tr><tr><td><code>\\</code></td><td>зворотна коса риска</td></tr><tr><td><code>\n</code></td><td>новий рядок</td></tr><tr><td><code>\t</code></td><td>табуляція</td></tr><tr><td><code>\r</code></td><td>повернення каретки</td></tr><tr><td><code>\b</code></td><td>границі слова</td></tr><tr><td><code>\f</code></td><td>перевід сторінки</td></tr></tbody></table>
 
-*Зверніть увагу, що сама зворотня коса риска повинна бути екранована для того, щоб вона відображалась.*
+*Note that the backslash itself must be escaped in order to display as a backslash.*
 
 # --instructions--
 
-Присвойте наступні 3 рядки тексту до єдиної змінної `myStr`, використовуючи екрановану послідовність.
+Assign the following three lines of text into the single variable `myStr` using escape sequences.
 
 <blockquote>FirstLine<br>    \SecondLine<br>ThirdLine</blockquote>
 
-Ви повинні використати керуючі послідовності, щоб правильно встановити спеціальні символи. Ви також повинні дотримуватись інтервалу, як показано вище, без пробілів між керуючими послідовностями або словами.
+You will need to use escape sequences to insert special characters correctly. You will also need to follow the spacing as it looks above, with no spaces between escape sequences or words.
 
-**Примітка:** відступ для `SecondLine` досягається за допомогою символу табуляції, а не пробілів.
+**Note:** The indentation for `SecondLine` is achieved with the tab escape character, not spaces.
 
 # --hints--
 
-`myStr` не повинна містити пробілів
+`myStr` should not contain any spaces
 
 ```js
 assert(!/ /.test(myStr));
 ```
 
-`myStr` повинна містити рядки `FirstLine`, `SecondLine` та `ThirdLine` (пам'ятайте про регістр)
+`myStr` should contain the strings `FirstLine`, `SecondLine` and `ThirdLine` (remember case sensitivity)
 
 ```js
 assert(
@@ -46,31 +41,31 @@ assert(
 );
 ```
 
-Після `FirstLine` повинен бути символ нового рядка `\n`
+`FirstLine` should be followed by the newline character `\n`
 
 ```js
 assert(/FirstLine\n/.test(myStr));
 ```
 
-`myStr` повинна містити символ табуляції `\t`, який йде після символу нового рядка
+`myStr` should contain a tab character `\t` which follows a newline character
 
 ```js
 assert(/\n\t/.test(myStr));
 ```
 
-Перед `SecondLine` повинен бути символ зворотної косої риски `\`
+`SecondLine` should be preceded by the backslash character `\`
 
 ```js
 assert(/\\SecondLine/.test(myStr));
 ```
 
-Між `SecondLine` та `ThirdLine` повинен бути символ нового рядка
+There should be a newline character between `SecondLine` and `ThirdLine`
 
 ```js
 assert(/SecondLine\nThirdLine/.test(myStr));
 ```
 
-`myStr` має містити лише символи, вказані в інструкціях
+`myStr` should only contain characters shown in the instructions
 
 ```js
 assert(myStr === 'FirstLine\n\t\\SecondLine\nThirdLine');
